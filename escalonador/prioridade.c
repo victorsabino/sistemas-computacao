@@ -39,7 +39,7 @@ int main(){
     FILE * entrada;
     FILE * saida;
     char command[5];
-    char nomePrograma[10];
+    char nomePrograma[10][10];
     printf("Executando o escalonador por prioridade...\n");
     
     saida = fopen("saidaprio.txt", "w");
@@ -47,7 +47,7 @@ int main(){
     
     for(i=0; i<1; i++){
 	printf("h\n");
-        fscanf(entrada, "%s %s %*s%*c %d", command, nomePrograma, &priorities[i]);
+        fscanf(entrada, "%*s %s %*s%*c %d", nomePrograma[i][0], &priorities[i]);
 	printf("\n command - %s \n", command);	
     }
     
