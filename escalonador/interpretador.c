@@ -6,20 +6,19 @@
 #include <string.h>
 
 int main () {
+	char * prior[] = {"prioridade", NULL};
+	char * rr[] = {"roundrobin", NULL};
 
 	int escalonador;
-	printf("Selecione o escalonador:\n1 - SJF\n2 - Prioridade com Preempção\n3 - Round-Robin\n");
+	printf("\n1 - Prioridade com Preempção\n2 - Round-Robin\n");
 	scanf("%d", &escalonador);
 
 	switch (escalonador) {
 		case 1:
-			system("./shortestjobfirst.c");
+			execve("/prioridade", prior);
 			break;
 		case 2:
-			system("./prioridade.c");
-			break;
-		case 3:
-			system("./roundrobin.c");
+			execve("/roundrobin", rr);
 			break;
 		default:
 			break;
@@ -27,5 +26,3 @@ int main () {
 
 	return 0;
 }
-
-© 2014 Microsoft Termos Privacidade e cookies Desenvolvedores Português (Brasil)
