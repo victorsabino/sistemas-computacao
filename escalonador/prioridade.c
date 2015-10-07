@@ -35,7 +35,7 @@ void execute(int i){
 }
 
 int main(){
-    int i, bigPrio, priorities[4], pid[4], verify[4] = {0,0,0,0};
+    int i, bigPrio, priorities[4], pid[4], verify[4] = {0,0,0,0}, nProgramas;
     FILE * entrada;
     FILE * saida;
     char command[5];
@@ -45,15 +45,11 @@ int main(){
     saida = fopen("saidaprio.txt", "w");
     entrada = fopen("entradaprio.txt", "r");
     
-    for(i=0; i<1; i++){
-	printf("h\n");
-        fscanf(entrada, "%*s %s %*s%*c %d", nomePrograma[i][0], &priorities[i]);
-	printf("\n command - %s \n", command);	
-    }
+    for(nProgramas = 0;fscanf(entrada, "%*s %s %*s%*c %d", &nomePrograma[i][0], &priorities[i])== 2; nProgramas++);
     
     
         while((priorities[0] != 7)||(priorities[1] != 7)||(priorities[2] != 7)||(priorities[3] != 7)){
-            
+   
             bigPrio = compare(priorities);
             if(verify[bigPrio] == 0){
                 fprintf(saida, "Executando o programa %d... \n", bigPrio);
