@@ -48,41 +48,23 @@ int main(){
     for(nProgramas = 0;fscanf(entrada, "%*s %s %*s%*c %d", &nomePrograma[i][0], &priorities[i])== 2; nProgramas++);
     
     
-        while((priorities[0] != 7)||(priorities[1] != 7)||(priorities[2] != 7)||(priorities[3] != 7)){
-   
+    for(i; i < nPrograma; i++){        
             bigPrio = compare(priorities);
             if(verify[bigPrio] == 0){
                 fprintf(saida, "Executando o programa %d... \n", bigPrio);
                 pid[bigPrio] = fork();
                 if(pid[bigPrio] == 0){
-                    execute(bigPrio);
+                    execve(nomePrograma[bigPrio][0], 0, 0);
                 }
                 sleep(1);
-                kill(pid[bigPrio], SIGSTOP);
-                fprintf(saida, "Interrompendo o programa %d... \n\n", bigPrio);
+                kill(pid[bigPrio], SIGKILL);
+                fprintf(saida, "Finalizando o programa %d... \n\n", bigPrio);
                 verify[bigPrio] = 1;
-                priorities[bigPrio]++;
-                if(priorities[bigPrio] > 7){
-                    priorities[bigPrio] = 7;
-                }
-            }
-            else{
-                fprintf(saida, "Continuando o programa %d... \n", bigPrio);
-                if(pid[bigPrio] == 0){
-                    kill(pid[bigPrio], SIGCONT);
-                }
-                    sleep(1);
-                    kill(pid[bigPrio], SIGSTOP);
-                    fprintf(saida, "Interrompendo o programa %d... \n\n", bigPrio);
+                priorities[bigPrio] = 10;
                 
-                priorities[bigPrio]++;
-                if(priorities[bigPrio] > 7){
-                    priorities[bigPrio] = 7;
-                }
             }
         }
-
-
+ 
     fclose(entrada);
     fclose(saida);
     

@@ -32,9 +32,7 @@ int main(){
     saida = fopen("/Users/Rito/Downloads/SC/saidarr.txt", "w");
     entrada = fopen("/Users/Rito/Downloads/SC/entradarr.txt", "r");
     
-    for(i=0; i<4; i++){
-        fscanf(entrada, "%d", &tempo[i]);
-    }
+    fscanf(entrada, "%d", &tempo[i]);
     
     
         while((tempo[0] > 0)||(tempo[1] > 0)||(tempo[2] > 0)||(tempo[3] > 0)){
